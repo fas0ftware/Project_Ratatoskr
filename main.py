@@ -10,7 +10,7 @@ MAX_REPEAT = 20
 
 
 def default_profile_dir(environ=os.environ):
-    return environ.get("RATATOSKR_PROFILE") or DEFAULT_PROFILE
+    return os.path.expanduser(environ.get("RATATOSKR_PROFILE") or DEFAULT_PROFILE)
 
 
 def parse_args(argv=None):
