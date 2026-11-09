@@ -4,7 +4,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 import time
 
 # --- SADE TEST KODU (PROFİLSİZ) ---
-def test_connection():
+def if __name__ == "__main__":
+    test_connection():
     print("🌍 Test başlıyor: Profilsiz temiz bir Chrome açılıyor...")
     
     # Hiçbir ayar (options) eklemiyoruz, dümdüz açıyoruz.
@@ -22,4 +23,5 @@ def test_connection():
     finally:
         driver.quit()
 
-test_connection()
+if __name__ == "__main__":
+    test_connection()
