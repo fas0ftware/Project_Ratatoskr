@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="785" height="424" viewBox="0 0 785 424">
+<rect width="100%" height="100%" rx="10" fill="#0d1117" stroke="#30363d"/>
+<rect width="100%" height="32" rx="10" fill="#161b22"/><rect y="22" width="100%" height="10" fill="#161b22"/>
+<circle cx="18" cy="16" r="6" fill="#ff5f56"/><circle cx="38" cy="16" r="6" fill="#ffbd2e"/><circle cx="58" cy="16" r="6" fill="#27c93f"/>
+<text x="393" y="21" fill="#8b949e" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" text-anchor="middle">Project_Ratatoskr — pytest</text>
+<g font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13" xml:space="preserve">
+<text x="14" y="56" fill="#58a6ff">$ python -m pytest -v</text>
+<text x="14" y="74" fill="#e6edf3">============================= test session starts ==============================</text>
+<text x="14" y="92" fill="#e6edf3">platform linux -- Python 3.14.4, pytest-9.2.0, pluggy-1.7.0 -- python</text>
+<text x="14" y="110" fill="#e6edf3">rootdir: .</text>
+<text x="14" y="128" fill="#e6edf3">plugins: anyio-4.16.0, platformdirs-4.14.5</text>
+<text x="14" y="146" fill="#e6edf3">collecting ... collected 11 items</text>
+<text x="14" y="164" fill="#e6edf3"></text>
+<text x="14" y="182" fill="#3fb950">tests/test_cli.py::ParseArgsTests::test_defaults PASSED                  [  9%]</text>
+<text x="14" y="200" fill="#3fb950">tests/test_cli.py::ParseArgsTests::test_dry_run_opens_no_browser PASSED  [ 18%]</text>
+<text x="14" y="218" fill="#3fb950">tests/test_cli.py::ParseArgsTests::test_parse_at PASSED                  [ 27%]</text>
+<text x="14" y="236" fill="#3fb950">tests/test_cli.py::ParseArgsTests::test_profile_dir_from_environment PASSED [ 36%]</text>
+<text x="14" y="254" fill="#3fb950">tests/test_cli.py::ParseArgsTests::test_several_recipients_without_duplicates PASSED [ 45%]</text>
+<text x="14" y="272" fill="#3fb950">tests/test_cli.py::ParseArgsTests::test_stdin_and_file PASSED            [ 54%]</text>
+<text x="14" y="290" fill="#3fb950">tests/test_cli.py::ParseArgsTests::test_total_messages_are_capped PASSED [ 63%]</text>
+<text x="14" y="308" fill="#3fb950">tests/test_cli.py::ParseArgsTests::test_validation PASSED                [ 72%]</text>
+<text x="14" y="326" fill="#3fb950">tests/test_cli.py::WhatsAppFlowTests::test_emoji_lines_are_inserted_not_typed PASSED [ 81%]</text>
+<text x="14" y="344" fill="#3fb950">tests/test_cli.py::WhatsAppFlowTests::test_multiline_uses_shift_enter PASSED [ 90%]</text>
+<text x="14" y="362" fill="#3fb950">tests/test_cli.py::WhatsAppFlowTests::test_send_opens_chat_and_sends_each_copy PASSED [100%]</text>
+<text x="14" y="380" fill="#e6edf3"></text>
+<text x="14" y="398" fill="#3fb950">============================== 11 passed in 0.03s ==============================</text>
+</g></svg>

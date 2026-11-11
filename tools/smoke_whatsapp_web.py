@@ -1,27 +1,21 @@
+"""Manual smoke test: opens WhatsApp Web in a clean Chrome (no profile) to check Selenium works."""
+import time
+
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-import time
 
-# --- SADE TEST KODU (PROFİLSİZ) ---
-def if __name__ == "__main__":
-    test_connection():
-    print("🌍 Test başlıyor: Profilsiz temiz bir Chrome açılıyor...")
-    
-    # Hiçbir ayar (options) eklemiyoruz, dümdüz açıyoruz.
+
+def test_connection(seconds: int = 30) -> None:
+    print("Opening a clean Chrome without a profile...")
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-
     try:
         driver.get("https://web.whatsapp.com")
-        print("✅ Başarılı! Siteye gidildi.")
-        
-        # Kapanmaması için uzun süre bekletiyorum
-        time.sleep(30)
-        
-    except Exception as e:
-        print(f"❌ Hata: {e}")
+        print("OK: page opened. Closing in", seconds, "seconds.")
+        time.sleep(seconds)
     finally:
         driver.quit()
+
 
 if __name__ == "__main__":
     test_connection()
