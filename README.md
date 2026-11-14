@@ -1,15 +1,17 @@
 # Ratatoskr
 
 [![CI](https://github.com/fas0ftware/Project_Ratatoskr/actions/workflows/ci.yml/badge.svg)](https://github.com/fas0ftware/Project_Ratatoskr/actions/workflows/ci.yml)
-![Version](https://img.shields.io/badge/version-2.0.0-blue)
+![Version](https://img.shields.io/badge/version-2.1.0-blue)
 ![Python](https://img.shields.io/badge/python-3.10%2B-yellow)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 Named after the squirrel that carries messages along Yggdrasil: sends **WhatsApp Web** messages from the command line with Selenium, using a dedicated Chrome profile so your normal Chrome and the WhatsApp login stay separate.
 
-![Dry run](docs/dry-run.svg)
+![Ratatoskr Web: recipients and message on the left, a WhatsApp-style preview in the middle, a scheduled job and a finished dry run on the right](docs/web.png)
 
 ## Features
+
+- **Ratatoskr Web** (`python web.py`): recipients as tags (recent ones one click away), a live WhatsApp-style preview, repeats, delay and a send time; dry run by default, a confirmation before a real send, jobs with their status and log, cancel a scheduled job.
 
 - One or several recipients (`--to` can be repeated), each message sent `--repeat` times.
 - Multi-line messages (sent as one message using Shift+Enter) from the command line, a file (`--file`) or stdin (`-`); emoji are inserted through the browser because ChromeDriver cannot type them.
@@ -36,9 +38,23 @@ python main.py Alice "hi" --dry-run
 
 On the first run, scan the QR code in the window that opens. The session is stored in `~/.ratatoskr_profile` (created with mode 0700; override with `--profile` or `RATATOSKR_PROFILE`), so later runs need no scan. `tools/smoke_whatsapp_web.py` opens WhatsApp Web in a clean Chrome to check that Selenium works.
 
+### Web interface
+
+```bash
+python web.py      # http://127.0.0.1:8744
+```
+
+The same flow and the same limits as the command line (at most 20 messages per job, at
+least one second apart, 4000 characters). New jobs are dry runs unless you untick the box,
+and a real send asks once more. It listens on 127.0.0.1 only, accepts requests only from
+its own page (Host and Origin checks), sends a strict Content-Security-Policy and shows
+names and messages only as text. Recent recipients are kept in `~/.ratatoskr_web.json`.
+
+![Dry run](docs/dry-run.svg)
+
 ## Tests
 
-The WhatsApp flow is tested against a fake driver (search, chat, Shift+Enter line breaks, emoji insertion, repeats); the command line is tested fully (limits, stdin, files, `--at`, dry run).
+The WhatsApp flow is tested against a fake driver (search, chat, Shift+Enter line breaks, emoji insertion, repeats); the command line is tested fully (limits, stdin, files, `--at`, dry run); the web interface is tested for its limits, dry runs through the real flow, scheduling and cancelling, and the Host/Origin guards. No test opens a browser.
 
 ```bash
 pip install -r requirements-dev.txt
@@ -56,6 +72,8 @@ python -m pytest -v
 - The profile folder holds your logged-in WhatsApp session: keep it private and never commit it.
 
 ## Changelog
+
+- **2.1.0** – Ratatoskr Web: compose with a live preview, schedule, dry-run and send from the browser, job list with cancel.
 
 - **2.0.0** – Several recipients, files and stdin, multi-line and emoji messages, `--at`, `--delay`, `--dry-run`, smart waiting instead of fixed sleeps, per-contact error handling, total message cap, private profile folder, fixed the broken smoke-test script, pytest suite with a fake driver, CI with bandit + pip-audit.
 - **1.0.0** – One contact, one message, fixed waits.

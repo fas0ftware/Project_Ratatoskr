@@ -13,7 +13,7 @@ import os
 import sys
 import time
 
-__version__ = "2.0.0"
+__version__ = "2.1.0"
 
 DEFAULT_PROFILE = os.path.join(os.path.expanduser("~"), ".ratatoskr_profile")
 MAX_TOTAL = 20          # messages per run, all contacts together: this is not a spam tool

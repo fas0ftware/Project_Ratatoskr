@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ratatoskr</title>
+  <link rel="icon" href="/static/ratatoskr.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/base.css">
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/ui.js" defer></script>
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <img src="/static/ratatoskr.svg" alt="" width="28" height="28">
+      <span class="brand__name">Ratatoskr</span>
+      <span class="brand__tag">WhatsApp Web messenger</span>
+      <span class="pill" id="version"></span>
+    </div>
+    <span class="note">At most 20 messages per job · automating WhatsApp Web is against its terms: use with care</span>
+  </header>
+
+  <main class="page compose-layout">
+    <form class="panel" id="form" novalidate>
+      <h1 class="panel__title">New message</h1>
+      <div class="field">
+        <span class="field__label">Recipients</span>
+        <div class="recipients" id="recipients">
+          <input type="text" id="contact" placeholder="Exact contact or group name, then Enter" autocomplete="off" aria-label="Add recipient">
+        </div>
+        <div class="recent" id="recent"></div>
+      </div>
+      <label class="field"><span class="field__label">Message</span>
+        <textarea name="text" rows="7" placeholder="Write the message… Line breaks and emoji are kept."></textarea></label>
+      <p class="note" id="count"></p>
+      <div class="row">
+        <label class="field"><span class="field__label">Repeat</span><input type="number" name="repeat" min="1" max="20" value="1"></label>
+        <label class="field"><span class="field__label">Delay (s)</span><input type="number" name="delay" min="1" max="60" step="0.5" value="1.5"></label>
+        <label class="field"><span class="field__label">Send at</span><input type="text" name="at" placeholder="now" maxlength="5" pattern="[0-2]?[0-9]:[0-5][0-9]"></label>
+      </div>
+      <label class="check"><input type="checkbox" name="dry_run" checked> Dry run: show what would be sent, open no browser</label>
+      <p class="error" id="error" role="alert" hidden></p>
+      <button class="btn btn--primary wide" type="submit" id="go">Try it (dry run)</button>
+      <p class="note foot">The first real send opens Chrome with a separate profile: scan the QR code once, later runs reuse the session.</p>
+    </form>
+
+    <section class="phone" aria-label="Preview">
+      <div class="phone__bar"><span class="avatar" id="avatar">?</span><span id="chat-name">Recipient</span></div>
+      <div class="phone__chat" id="bubbles"></div>
+      <div class="phone__input"><span>Message</span></div>
+    </section>
+
+    <section class="jobs-col" aria-labelledby="jobs-title">
+      <h2 class="section-title first" id="jobs-title">Jobs</h2>
+      <div id="jobs" class="jobs"></div>
+    </section>
+  </main>
+</body>
+</html>
